@@ -1,0 +1,2 @@
+select FirstName, LastName from driver join park 
+where ParkId = 1 and DriverId in (select DriverId from auto where Year >= 2010);
