@@ -1,0 +1,24 @@
+CREATE TABLE IF NOT EXISTS `autopark2`.`DRIVER_CAR_PARK` (
+  `CAR_car_id` INT NOT NULL,
+  `PARK_park_id` INT NOT NULL,
+  `DRIVER_driver_id` INT NOT NULL,
+  PRIMARY KEY (`CAR_car_id`, `PARK_park_id`, `DRIVER_driver_id`),
+  INDEX `fk_DRIVER_CAR_PARK_PARK1_idx` (`PARK_park_id` ASC),
+  INDEX `fk_DRIVER_CAR_PARK_DRIVER1_idx` (`DRIVER_driver_id` ASC),
+  UNIQUE INDEX `CAR_car_id_UNIQUE` (`CAR_car_id` ASC),
+  CONSTRAINT `fk_DRIVER_CAR_PARK_CAR1`
+    FOREIGN KEY (`CAR_car_id`)
+    REFERENCES `autopark2`.`CAR` (`car_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_DRIVER_CAR_PARK_PARK1`
+    FOREIGN KEY (`PARK_park_id`)
+    REFERENCES `autopark2`.`PARK` (`park_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_DRIVER_CAR_PARK_DRIVER1`
+    FOREIGN KEY (`DRIVER_driver_id`)
+    REFERENCES `autopark2`.`DRIVER` (`driver_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
